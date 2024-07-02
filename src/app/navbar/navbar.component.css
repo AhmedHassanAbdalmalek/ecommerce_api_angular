@@ -1,0 +1,19 @@
+nav{
+    /* background-color:black; */
+   
+   
+}
+a{ color: black !important;  }
+.s:hover{
+    
+    background-color: rgb(241, 205, 163) !important;
+}
+.s{
+    border-radius: 5px;
+
+}
+.h:hover{
+    color: white!important;}
+    .h{
+        color: rgb(27, 165, 15) !important;
+    }

@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+ 
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <div class="login-box">
+          <div class="login-logo">
+           <h1 style="text-align:center"> register Page </h1>
+          </div>
+          <div class="card card1">       
+          <form [formGroup]="form">
+            {{message}}
+            <div class="card-body login-card-body">
+                <!-- <div class="input-group mb-3">
+                    <label for="fname"class="col-sm-2 col-form-label col-form-label" >Email:</label>
+                  <input type="email" class="form-control" formControlName="mail" placeholder="Email" style="padding:20px">
+                </div>  
+                  
+                  <div *ngIf="f['mail'].touched && f['mail'].invalid" style="color:red;"class="msgerror" >
+                    <div *ngIf="f['mail'].errors && f['mail'].errors['required']">   * Email is required.</div>
+                    <div *ngIf="f['mail'].errors && f['mail'].errors['email']">    Invalid Email.</div>
+                  </div> -->
+                      
+            <div class="input-group mb-3">
+              <label for="username"class="col-sm-2 col-form-label col-form-label" >User Name:</label>
+          
+                <input type="text" id="username" class="form-control"  formControlName="username" placeholder="user name" name="username" style="padding:20px">
+              
+         </div>
+         <div *ngIf="f['username'].touched && f['username'].invalid" style="color:red;"class="msgerror" >
+          <div *ngIf="f['username'].errors && f['username'].errors['required']">   * User Name is required.</div>
+          
+        </div>
+                        
+                <div class="input-group mb-3">
+                    <label for="password"class="col-sm-2 col-form-label col-form-label">Password:</label>
+                  <input id="password" type="password" class="form-control" formControlName="password" name="password1" placeholder="Password" style="padding:20px">
+                </div>
+                <!-- <div *ngIf="f['pass'].touched && f['pass'].invalid" style="color:red;" class="msgerror">
+                  <div *ngIf="f['pass'].errors && f['pass'].errors['required']">Password is required.</div>
+                </div> -->
+                           
+               
+                
+            
+                
+          <div class="input-group mb-3">
+            <label for="usertype" class="form-label" class="col-sm-2 col-form-label col-form-label" >User type:</label>
+            <select name="usertype" formControlName="usertype"id="usertype" class="form-select">
+              <option selected>choose..</option>
+              <option value="1">Admin</option>
+              <option value="2">employee</option>
+              <option value="3">user</option>
+            </select>
+             
+              <!-- <input type="text" id="usertype" class="form-control"  formControlName="usertype" placeholder="usertype" name="usertype" style="padding:20px"> -->
+            
+       </div>
+           
+                <div class="row">
+                  <button type="submit" class="btn btn-primary btn-block login" [disabled]="form.invalid" (click)="submit()"> register</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+  </div>
+  <div class="col-md-2"></div>
+  
+  </div>
+  
+  </div>
+
+
+
+
+
+
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

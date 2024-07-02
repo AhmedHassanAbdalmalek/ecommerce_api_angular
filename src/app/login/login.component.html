@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <div class="login-box">
+          <div class="login-logo">
+           <h1 style="text-align:center"> Login Page </h1>
+          </div>
+          <div class="card card1">       
+          <form [formGroup]="form">
+            {{message}}
+            <div class="card-body login-card-body">
+                <div class="input-group mb-3">
+                  <input type="email" class="form-control" formControlName="email" placeholder="Email" style="padding:20px">
+                </div>    
+                  <div *ngIf="f['email'].touched && f['email'].invalid" style="color:red;"class="msgerror" >
+                    <div *ngIf="f['email'].errors && f['email'].errors['required']">   * Email is required.</div>
+                    <div *ngIf="f['email'].errors && f['email'].errors['email']">    Invalid Email.</div>
+                  </div>
+                        
+                <div class="input-group mb-3">
+                  <input type="password" class="form-control" formControlName="password" placeholder="Password" style="padding:20px">
+                </div>
+                <div *ngIf="f['password'].touched && f['password'].invalid" style="color:red;" class="msgerror">
+                  <div *ngIf="f['password'].errors && f['password'].errors['required']">Password is required.</div>
+                </div>
+                <div class="row">
+                  <button type="submit" class="btn btn-primary btn-block login" [disabled]="form.invalid" (click)="submit()"> Log in</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+  </div>
+  <div class="col-md-2"></div>
+  
+  </div>
+  
+  </div>

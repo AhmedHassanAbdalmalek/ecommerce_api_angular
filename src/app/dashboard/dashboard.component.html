@@ -1,0 +1,133 @@
+
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <!-- start all product -->
+    <p style="color: blue; font-size: 20px;">Hi Admin: {{rolename}}</p>
+<div class="container">
+    <h1 style="text-align: center;">All cars</h1>
+      <div class="row">
+      
+          <div class="col-lg-3 col-md-6 col-sm-12 mt-5" *ngFor="let item of items" >
+              <div class="card " style="width:250px" >
+                <img class="card-img-top" src="../../assets/{{item.product_image}}" alt="Card image" style="width:100%;height:200px">
+                <div class="card-body">
+                  <h4 class="card-title">{{item.stock}}</h4>
+                  <!-- <h3 class="card-title">{{item.price|currency}}</h3> -->
+                  <h3 class="card-title">{{item.price|currency:'EGP'}}</h3>
+                  <!-- <h3 class="card-title">by dollar:{{item.price|egttousd}}</h3> -->
+                 
+                  <!-- <h3 class="card-title">{{item.date|date}}</h3> -->
+                  <p class="card-text">{{item.description}}</p>
+                  <a href="getproduct/{{item.product_id}}" class="btn btn-primary m-3"> details</a>
+                  <a href="updateproduct/{{item.product_id}}" class="btn btn-primary">Update</a>
+                  <a href="deleteproduct/{{item.product_id}}"(click)="deleteproduct(item.product_id)" class="btn btn-primary m-3">Delete</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+  </div>
+     <!-- end all product -->
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <div class="login-box">
+          <div class="login-logo">
+           <h1 style="text-align:center"> insert product </h1>
+          </div>
+          <div class="card card1">       
+          <form [formGroup]="form">
+          <span style="color:green;font:bold">  {{message1}}</span>
+            <div class="card-body login-card-body">
+                <!-- <div class="input-group mb-3">
+                    <label for="fname"class="col-sm-2 col-form-label col-form-label" >Email:</label>
+                  <input type="email" class="form-control" formControlName="mail" placeholder="Email" style="padding:20px">
+                </div>  
+                  
+                  <div *ngIf="f['mail'].touched && f['mail'].invalid" style="color:red;"class="msgerror" >
+                    <div *ngIf="f['mail'].errors && f['mail'].errors['required']">   * Email is required.</div>
+                    <div *ngIf="f['mail'].errors && f['mail'].errors['email']">    Invalid Email.</div>
+                  </div> -->
+                      
+            <div class="input-group mb-3">
+              <label for="description"class="col-sm-2 col-form-label col-form-label" >Description:</label>
+          
+                <input type="text" id="description" class="form-control"  formControlName="description" placeholder="description" name="description" style="padding:20px">
+              
+         </div>
+         <div *ngIf="f['description'].touched && f['description'].invalid" style="color:red;"class="msgerror" >
+          <div *ngIf="f['description'].errors && f['description'].errors['required']">   * description is required.</div>
+          
+        </div>
+                        
+                <div class="input-group mb-3">
+                    <label for="price"class="col-sm-2 col-form-label col-form-label">price:</label>
+                  <input id="price" type="number" class="form-control" formControlName="price" name="password1" placeholder="price" style="padding:20px">
+                </div>
+                <!-- <div *ngIf="f['pass'].touched && f['pass'].invalid" style="color:red;" class="msgerror">
+                  <div *ngIf="f['pass'].errors && f['pass'].errors['required']">Password is required.</div>
+                </div> -->
+                           
+                <div class="input-group mb-3">
+                    <label for="stock"class="col-sm-2 col-form-label col-form-label">stock:</label>
+                  <input id="stock" type="text" class="form-control" formControlName="stock" name="stock" placeholder="stock" style="padding:20px">
+                </div>
+                <div class="input-group mb-3">
+                    <label for="product_image"class="col-sm-2 col-form-label col-form-label">product_image:</label>
+                  <input id="product_image" type="text" class="form-control" formControlName="product_image" name="product_image" placeholder="product_image" style="padding:20px">
+                </div>
+                
+                
+            
+                
+          <div class="input-group mb-3">
+            <label for="category_id_prod_fk" class="form-label" class="col-sm-2 col-form-label col-form-label" >Category:</label>
+            <select name="category_id_prod_fk" formControlName="category_id_prod_fk"id="category_id_prod_fk" class="form-select">
+              <option value="" disabled selected>choose..</option>
+              <option value="1">car</option>
+              <option value="2">mobile</option>
+            
+            </select>
+             
+              <!-- <input type="text" id="usertype" class="form-control"  formControlName="usertype" placeholder="usertype" name="usertype" style="padding:20px"> -->
+            
+       </div>
+           
+                <div class="row">
+                  <button type="submit" class="btn btn-primary btn-block login" [disabled]="form.invalid" (click)="submit()"> register</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+  </div>
+  <div class="col-md-2"></div>
+  
+  </div>
+  
+  </div>
+
+
+
+
+
+
+
+  
+</body>
+</html>
+
+
+
+
+  
