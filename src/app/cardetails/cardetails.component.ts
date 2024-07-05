@@ -15,6 +15,12 @@ export class CardetailsComponent {
   ngOnInit(): void {
     let id_product=this.route.snapshot.paramMap.get('id');
     this.product.get_productdetails(id_product).subscribe((data:any) => {
+      for(let product of data){
+        // product.newid=btoa(product.product_id);
+         
+         product.product_image="http://localhost/petra/API/ecommerce%20project"+product.product_image
+ 
+       }
       this.items = data[0];
     })
   }

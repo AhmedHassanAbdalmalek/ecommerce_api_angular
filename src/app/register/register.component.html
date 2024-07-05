@@ -10,18 +10,18 @@
   <title>Document</title>
 </head>
 <body>
-  <div class="container">
+  <div class="container" class="b">
  
     <div class="row">
       <div class="col-md-2"></div>
       <div class="col-md-8">
         <div class="login-box">
           <div class="login-logo">
-           <h1 style="text-align:center"> register Page </h1>
+           <h1 style="text-align:center;font-family: Times New Roman, Times, serif;"> registeration </h1>
           </div>
           <div class="card card1">       
           <form [formGroup]="form">
-            {{message}}
+           <span style="color: green;"> {{message}}</span>
             <div class="card-body login-card-body">
                 <!-- <div class="input-group mb-3">
                     <label for="fname"class="col-sm-2 col-form-label col-form-label" >Email:</label>
@@ -43,6 +43,12 @@
           <div *ngIf="f['username'].errors && f['username'].errors['required']">   * User Name is required.</div>
           
         </div>
+        <div class="input-group mb-3">
+          <label for="email"class="col-sm-2 col-form-label col-form-label" >Email:</label>
+      
+            <input type="text" id="email" class="form-control"  formControlName="email" placeholder="user email" name="email" style="padding:20px">
+          
+     </div>
                         
                 <div class="input-group mb-3">
                     <label for="password"class="col-sm-2 col-form-label col-form-label">Password:</label>
@@ -59,7 +65,7 @@
           <div class="input-group mb-3">
             <label for="usertype" class="form-label" class="col-sm-2 col-form-label col-form-label" >User type:</label>
             <select name="usertype" formControlName="usertype"id="usertype" class="form-select">
-              <option selected>choose..</option>
+              <option value="" disabled selected>choose..</option>
               <option value="1">Admin</option>
               <option value="2">employee</option>
               <option value="3">user</option>

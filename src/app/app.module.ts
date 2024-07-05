@@ -19,6 +19,7 @@ import { CardetailsComponent } from './cardetails/cardetails.component';
 import { RouterModule } from '@angular/router';
 import { UpdateproductComponent } from './updateproduct/updateproduct.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ProductlistComponent } from './productlist/productlist.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MobilecategoryComponent,
     CardetailsComponent,
     UpdateproductComponent,
-    DashboardComponent
+    DashboardComponent,
+    ProductlistComponent
   ],
   imports: [
     BrowserModule,

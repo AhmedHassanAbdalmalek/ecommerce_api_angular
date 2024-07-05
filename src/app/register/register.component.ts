@@ -18,6 +18,7 @@ export class RegisterComponent {
     this.form=this.formbuilder.group({
     //  mail:['',[Validators.required,Validators.email]],
     username:['',[Validators.required]],
+   email:['',[Validators.required]],
     password:['',[Validators.required]],
       
       usertype:['',[Validators.required]]
@@ -41,8 +42,12 @@ export class RegisterComponent {
     submit(){
      
  // console.log(this.form.value);
-    this.product.insertuser(this.form.value).subscribe((data) => {
+    this.product.insertuser(this.form.value).subscribe((data:any) => {
       console.log(data);
+      if(data){
+        this.message=data['message'];
+
+      }
       
     })
  

@@ -4,7 +4,9 @@ img{
 }
 .c{
     height: 500px !important;
+    /* background-color: rgb(112, 165, 165); */
 }
+
 /* body{
     background-image: url('/assets/bg2.jpg') !important;
     background-repeat: no-repeat !important;

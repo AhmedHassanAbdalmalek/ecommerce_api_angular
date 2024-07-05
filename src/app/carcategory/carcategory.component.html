@@ -1,19 +1,19 @@
 
 <div class="container">
-  <h1 style="text-align: center;">cars</h1>
+  <h1 style="text-align: center;color: white;">Products</h1>
     <div class="row">
     
         <div class="col-lg-3 col-md-6 col-sm-12 mt-5" *ngFor="let item of items" >
             <div class="card " style="width:250px" >
-              <img class="card-img-top" src="../../assets/{{item.product_image}}" alt="Card image" style="width:100%;height:200px">
+              <img class="card-img-top" [src]="item.product_image" alt="Card image" style="width:100%;height:200px">
               <div class="card-body">
                 <h4 class="card-title">{{item.stock}}</h4>
                 <!-- <h3 class="card-title">{{item.price|currency}}</h3> -->
-                <h3 class="card-title">{{item.price|currency:'EGP'}}</h3>
+                <!-- <h3 class="card-title">{{item.price|currency:'EGP'}}</h3> -->
                 <!-- <h3 class="card-title">by dollar:{{item.price|egttousd}}</h3> -->
                
                 <!-- <h3 class="card-title">{{item.date|date}}</h3> -->
-                <p class="card-text">{{item.description}}</p>
+                <!-- <p class="card-text">{{item.description}}</p> -->
                 <a href="getproduct/{{item.product_id}}" class="btn btn-primary m-3">See details</a>
                 <!-- <a href="updateproduct/{{item.product_id}}" class="btn btn-primary">Update</a> -->
               </div>

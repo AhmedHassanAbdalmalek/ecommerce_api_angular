@@ -1,15 +1,21 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GetproductService {
+  baseURL="http://localhost/petra/API/ecommerce%20project"
 
   constructor(private http: HttpClient) {}
   get_product()
   {
     return this.http.get<[]>('http://localhost/petra/API/ecommerce project/getproduct.php');
+  }
+  get_carproduct()
+  {
+    return this.http.get<[]>('http://localhost/petra/API/ecommerce project/getcarproduct.php');
   }
   get_productdetails(id:any)
   {
@@ -33,8 +39,15 @@ export class GetproductService {
   }
   insertproduct(data:any)
   {
-     const datajson=JSON.stringify(data);
-    return this.http.post('http://localhost/petra/API/ecommerce project/insertproduct.php',datajson);
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'multipart/form-data');
+    headers.set('Content-Type', 'application/json; charset=utf-8');
+    // const datajson=JSON.stringify(data);
+    return this.http.post('http://localhost/petra/API/ecommerce project/insertproduct.php',data,{headers: headers})
+    .pipe(map((res: any) => {
+      
+      return res;
+      }));
   }
   deleteproduct(id:any)
   {

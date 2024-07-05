@@ -24,7 +24,8 @@ export class DashboardComponent {
       
     category_id_prod_fk:['',[Validators.required]]
     ,stock:['',[Validators.required]],
-    product_image:['',[Validators.required]]
+    file:[''],
+      fileSource:[''],
      // cpass:['',[Validators.required]]
     }
       // ,{Validators :this.checkmatchpassword}
@@ -42,10 +43,25 @@ export class DashboardComponent {
     //   //console.log(this.form.controls)
     //   return this.form.get('cpass')
     // }
+    public  onFileChange(event:any){
+      console.log(event.target.files)
+         if (event.target.files.length > 0) {
+          const fileee = event.target.files[0];
+          this.form.patchValue({
+            fileSource: fileee
+          });
+        }
+    }
     ngOnInit(): void {
-      this.product.get_product().subscribe((data) => {
+      this.product.get_product().subscribe((data:any) => {
         console.log(data);
-        this.items = data;
+        for(let product of data){
+          // product.newid=btoa(product.product_id);
+           
+         product.product_image="http://localhost/petra/API/ecommerce%20project"+product.product_image;
+   
+         }
+         this.items = data;
         var user_data: any =localStorage.getItem('user-Data-login');
           user_data= JSON.parse(user_data);
           this.rolename=user_data['username'];
@@ -59,9 +75,21 @@ export class DashboardComponent {
                 this.product.deleteproduct(id).subscribe((res:any) => {
               })};
     submit(){
+      console.log(this.form.value)
+   
+    const formData = new FormData();
+    formData.append('fileSource',this.form.controls['fileSource'].value);
+    formData.append('description',this.form.controls['description'].value);
+    formData.append('price',this.form.controls['price'].value);
+    formData.append('category_id_prod_fk',this.form.controls['category_id_prod_fk'].value);
+   
+    formData.append('stock',this.form.controls['stock'].value);
+    formData.append('file',this.form.controls['file'].value);
+    
+
      
  // console.log(this.form.value);
-    this.product.insertproduct(this.form.value).subscribe((res:any) => {
+    this.product.insertproduct(formData).subscribe((res:any) => {
       //console.log(res[0].message);
     
        if(res[0].message=="productinserted")

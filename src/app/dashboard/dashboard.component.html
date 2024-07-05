@@ -12,25 +12,26 @@
 <body>
   <div class="container">
     <!-- start all product -->
-    <p style="color: blue; font-size: 20px;">Hi Admin: {{rolename}}</p>
+    <p style="color: blue; font-size: 20px;font-family: fantasy;">Hi Admin: {{rolename}}</p>
 <div class="container">
-    <h1 style="text-align: center;">All cars</h1>
-      <div class="row">
+    <h1 style="text-align: center; font-family: Times New Roman, Times, serif;">All cars</h1>
+      <div class="row"style="background-color:rgb(8, 16, 44)!important;margin: 10px;border: 5px solid white;border-radius: 15px;">
       
           <div class="col-lg-3 col-md-6 col-sm-12 mt-5" *ngFor="let item of items" >
               <div class="card " style="width:250px" >
-                <img class="card-img-top" src="../../assets/{{item.product_image}}" alt="Card image" style="width:100%;height:200px">
+                <img class="card-img-top" [src]="item.product_image"alt="Card image" style="width:100%;height:200px">
                 <div class="card-body">
                   <h4 class="card-title">{{item.stock}}</h4>
                   <!-- <h3 class="card-title">{{item.price|currency}}</h3> -->
-                  <h3 class="card-title">{{item.price|currency:'EGP'}}</h3>
+                  <!-- <h3 class="card-title">{{item.price|currency:'EGP'}}</h3> -->
                   <!-- <h3 class="card-title">by dollar:{{item.price|egttousd}}</h3> -->
                  
                   <!-- <h3 class="card-title">{{item.date|date}}</h3> -->
-                  <p class="card-text">{{item.description}}</p>
-                  <a href="getproduct/{{item.product_id}}" class="btn btn-primary m-3"> details</a>
-                  <a href="updateproduct/{{item.product_id}}" class="btn btn-primary">Update</a>
-                  <a href="deleteproduct/{{item.product_id}}"(click)="deleteproduct(item.product_id)" class="btn btn-primary m-3">Delete</a>
+                  <!-- <p class="card-text">{{item.description}}</p> -->
+                  <div class="row">    <a href="getproduct/{{item.product_id}}" class="btn btn-primary m-3"> details</a>
+                    <a href="updateproduct/{{item.product_id}}" class="btn btn-primary  m-3">Update</a>
+                    <a href="deleteproduct/{{item.product_id}}"(click)="deleteproduct(item.product_id)" class="btn btn-primary m-3">Delete</a></div>
+              
                 </div>
               </div>
             </div>
@@ -38,12 +39,12 @@
           
   </div>
      <!-- end all product -->
-    <div class="row">
+    <div class="row" class="b">
       <div class="col-md-2"></div>
       <div class="col-md-8">
         <div class="login-box">
           <div class="login-logo">
-           <h1 style="text-align:center"> insert product </h1>
+           <h1 style="text-align: center; font-family: Times New Roman, Times, serif;"> insert product </h1>
           </div>
           <div class="card card1">       
           <form [formGroup]="form">
@@ -82,11 +83,10 @@
                     <label for="stock"class="col-sm-2 col-form-label col-form-label">stock:</label>
                   <input id="stock" type="text" class="form-control" formControlName="stock" name="stock" placeholder="stock" style="padding:20px">
                 </div>
-                <div class="input-group mb-3">
-                    <label for="product_image"class="col-sm-2 col-form-label col-form-label">product_image:</label>
-                  <input id="product_image" type="text" class="form-control" formControlName="product_image" name="product_image" placeholder="product_image" style="padding:20px">
+                <div  class="input-group mb-3">
+                  <label for="file"class="col-sm-2 col-form-label col-form-label">file</label>
+                  <input type="file" id="uploadImage" class="form-control right" name="uploadFile[]"style="padding:20px" class="file" (change)="onFileChange($event)" accept=".png, .jpg, .jpeg,.gif" formControlName="file" >
                 </div>
-                
                 
             
                 

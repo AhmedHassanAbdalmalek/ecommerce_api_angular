@@ -52,9 +52,11 @@ export class NavbarComponent {
     if(user_data){
       user_data= JSON.parse(user_data);
       let rolename=user_data['Role_name'];
-      console.log(rolename);
+      
       if(rolename=='admin')
-      {this.checkadmin1=true;}
+      {
+        //this.checkadmin1=true;
+       return this.route.url!='/dashboard';}
      
       
         return this.checkadmin1;
@@ -63,6 +65,7 @@ export class NavbarComponent {
     }
 
   };
+
   
 
   

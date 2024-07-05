@@ -3,20 +3,16 @@ import { Router } from '@angular/router';
 import { GetproductService } from '../api/getproduct.service';
 
 @Component({
-  selector: 'app-carcategory',
-  templateUrl: './carcategory.component.html',
-  styleUrls: ['./carcategory.component.css']
+  selector: 'app-productlist',
+  templateUrl: './productlist.component.html',
+  styleUrls: ['./productlist.component.css']
 })
-export class CarcategoryComponent {
-  // items=[{cardimage:'assets/c.jpg',card_name:"bmw",description:'egypt',price:50,date:new Date()},
-  // {cardimage:'assets/b.jpg',card_name:"mercedes",description:'sauid',price:1000,date:new Date()},
-  // {cardimage:'assets/j.jpg',card_name:"hyndai",description:'strong speed',price:200,date:new Date()},
-  // {cardimage:'assets/b.jpg',card_name:"128",description:'strong amazing',price:200000,date:new Date()}];
+export class ProductlistComponent {
   items:any=[];
 
   constructor(private product: GetproductService ,private router:Router) {}
   ngOnInit(): void {
-    this.product.get_carproduct().subscribe((data:any) => {
+    this.product.get_product().subscribe((data:any) => {
       console.log(data);
       for(let product of data){
        // product.newid=btoa(product.product_id);
@@ -32,6 +28,5 @@ export class CarcategoryComponent {
     })
   }
 
-  
-  
+
 }
